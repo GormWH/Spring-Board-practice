@@ -34,4 +34,24 @@ public class BoardMapperTests {
         boardList.forEach(board -> log.info(board));
     }
 
+    @Test
+    public void testDelete() {
+        int bno = 131058;
+        boardMapper.delete(bno);
+    }
+
+    @Test
+    public void testSelectOne() {
+        Board board = boardMapper.selectOne(131059);
+        log.info(board);
+    }
+
+    @Test
+    public void testUpdate() {
+        Board board = boardMapper.selectOne(131059);
+        board.setTitle("new title");
+        board.setContent("update test");
+
+        boardMapper.update(board);
+    }
 }

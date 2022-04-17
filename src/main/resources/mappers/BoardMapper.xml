@@ -4,6 +4,9 @@
         "http://mtbatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.suhong.sp1prac.mapper.BoardMapper">
     <insert id="insert">
+<!--        <selectKey resultType="int" keyProperty="bno" order="AFTER">-->
+<!--            select last_insert_id()-->
+<!--        </selectKey>-->
         insert into tbl_board (title, content, writer)
         value (#{title}, #{content}, #{writer})
     </insert>
@@ -14,4 +17,16 @@
         order by bno desc
         limit #{skip}, #{size}
     </select>
+
+    <delete id="delete">
+        delete from tbl_board where bno = #{bno}
+    </delete>
+
+    <select id="selectOne" resultType="com.suhong.sp1prac.domain.Board">
+        select * from tbl_board where bno = #{bno}
+    </select>
+
+    <update id="update">
+        update tbl_board set title = #{title}, content = #{content}, updateDate = now() where bno = #{bno}
+    </update>
 </mapper>
