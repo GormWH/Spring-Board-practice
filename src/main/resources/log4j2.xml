@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<configuration status="INFO">
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n"/>
+        </Console>
+    </Appenders>
+
+    <loggers>
+        <logger name="org.springframework" level="INFO" additivity="false">
+            <appender-ref ref="console" />
+        </logger>
+
+        <logger name="com.suhong" level="INFO" additivity="false">
+            <appender-ref ref="console" />
+        </logger>
+
+        <!-- mapper: sql문이 어떻게 만들어지는지 확인하기 위해 TRACE로 설정 -->
+        <logger name="com.suhong.sp1prac.mapper" level="TRACE" additivity="false">
+            <appender-ref ref="console" />
+        </logger>
+
+        <root level="INFO" additivity="false">
+            <AppenderRef ref="console"/>
+        </root>
+
+    </loggers>
+
+</configuration>
